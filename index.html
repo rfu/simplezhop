@@ -14,10 +14,12 @@
 				e.preventDefault();
 
 				$.ajax({
-				url: "http://9l.dk/zhopz/",
-				data: $('#myForm').serialize() +'&callback=?&add',
-				type: 'POST'
+					url: "http://9l.dk/zhopz/",
+					data: $('#myForm').serialize(),
+					type: 'POST',
+					dataType: 'jsonp'
 				});
+
 				return false;
 			});
 
