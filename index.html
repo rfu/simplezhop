@@ -25,7 +25,7 @@
 			});
 
 			$.get("http://9l.dk/zhopz/json.php?cats", {}, function(json) {
-				$.each(json.cats, function(i, cat) {
+				$.each(json, function(i, cat) {
 					$('#dataload').append(cat.catname);
 				});
 				$("#dataload").listview('refresh');
