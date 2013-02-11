@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<title>PhoneGap Android App</title>
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-		<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 		function onDeviceReady() {
 			$("#myForm").submit(function(e){
@@ -32,9 +32,11 @@
 			}, 'jsonp');
 
 			$.get("http://9l.dk/zhopz/json.php?cat=1", {}, function(json) {
+				$('#dataentry').append('<ul>');
 				$.each(json, function(i, cat) {
-					$('#dataentry').append(cat.vare);
+					$('#dataentry').append('<li>'+ cat.vare + '</li>');
 				});
+				$('#dataentry').append('<ul>');
 				$("#dataentry").listview('refresh');
 			}, 'jsonp');
 
