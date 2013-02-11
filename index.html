@@ -32,9 +32,10 @@
 			<div id="main-content">
 
 				<script>
-					$(document).ready(function() {
+					$(document).live("mobileinit", function(){
 						$("#myForm").submit(function(e){
 							e.preventDefault();
+
 							$.ajax({
 							url: "http://9l.dk/zhopz/",
 							data: $('#myForm').serialize() +'&callback=?&add',
@@ -42,10 +43,11 @@
 							});
 						});
 
-						$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(data) {
-							$.each(data, function(i, cat) {
-								$('#dataload').append(data[i].catname);
+						$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(json) {
+							$.each(json.cats, function(i, cat) {
+								$('#dataload').append(cat.catname);
 							});
+							$("#dataload").listview('refresh');
 						});
 
 					});
