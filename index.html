@@ -24,14 +24,12 @@
 				return false;
 			});
 
-			return;
-
-			$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(json) {
+			$.get("http://9l.dk/zhopz/json.php?cats", {}, function(json) {
 				$.each(json.cats, function(i, cat) {
 					$('#dataload').append(cat.catname);
 				});
 				$("#dataload").listview('refresh');
-			});
+			}, 'jsonp');
 
 		}
 		function onMenuKeyDown() {
@@ -54,7 +52,7 @@
 		</header>
 		<div id="wrapper">
 			<div id="main-content">
-				<div id="dataload">&nbsp;</div>
+				<div id="dataload">...</div>
 			</div>
 		</div>
 
