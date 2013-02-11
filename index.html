@@ -43,12 +43,9 @@
 						});
 
 						$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(data) {
-							info = data.items;
-							$.each(info, function(index, employee) {
-								$('#dataload').append('<li><a href="employeedetails.html?id=' + info.id + '">' +
-								'<span class="ui-li-count">' + employee.catname + '</span></a></li>');
+							$.each(data, function(i, cat) {
+								$('#dataload').append(data[i].catname);
 							});
-							$('#dataload').listview('refresh');
 						});
 
 					});
