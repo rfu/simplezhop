@@ -18,6 +18,7 @@
 				data: $('#myForm').serialize() +'&callback=?&add',
 				type: 'POST'
 				});
+				return false;
 			});
 
 			$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(json) {
@@ -25,7 +26,7 @@
 					$('#dataload').append(cat.catname);
 				});
 				$("#dataload").listview('refresh');
-			});			
+			});
 		}
 		function onMenuKeyDown() {
 			navigator.notification.alert("Hello World of PhoneGap");
@@ -33,7 +34,7 @@
 		function init(){
 			document.addEventListener("deviceready", onDeviceReady, true);
 
-						
+
 
 		}
 		</script>
@@ -41,8 +42,8 @@
 	<body onload="init();">
 
 		<header>
-			<form id="myForm" action="" type="POST">
-			<input type="text" name="vare" placeholder="Tilføj..." />
+			<form id="myForm" action="" type="post">
+				<input type="text" name="vare" placeholder="Tilføj..." />
 			</form>
 		</header>
 		<div id="wrapper">
