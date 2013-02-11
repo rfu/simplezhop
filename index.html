@@ -9,15 +9,19 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
+		function alertDismissed() {
+			// do something
+		}
 		var showMessageBox = function() {
-		navigator.notification.alert("Hello World of PhoneGap");
-		document.addEventListener("menubutton", onMenuKeyDown, false);
+			document.addEventListener("menubutton", onMenuKeyDown, false);
+
+			navigator.notification.alert('Weeeelcome!', alertDismissed, 'Have a nice day!', 'Thanks!');
 		}
 		function onMenuKeyDown() {
-		navigator.notification.alert("Hello World of PhoneGap");
+			navigator.notification.alert("Hello World of PhoneGap");
 		}
 		function init(){
-		document.addEventListener("deviceready", showMessageBox, true);
+			document.addEventListener("deviceready", showMessageBox, true);
 		}
 		</script>
 	</head>
