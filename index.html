@@ -31,6 +31,13 @@
 				$("#dataload").listview('refresh');
 			}, 'jsonp');
 
+			$.get("http://9l.dk/zhopz/json.php?cat=1", {}, function(json) {
+				$.each(json, function(i, cat) {
+					$('#dataentry').append(cat.vare);
+				});
+				$("#dataentry").listview('refresh');
+			}, 'jsonp');
+
 		}
 		function onMenuKeyDown() {
 			navigator.notification.alert("Hello World of PhoneGap");
@@ -52,7 +59,7 @@
 		</header>
 		<div id="wrapper">
 			<div id="main-content">
-				
+				<div id="dataentry"></div>
 			</div>
 		</div>
 
