@@ -1,1 +1,7 @@
-<plugin name="Notification" value="org.apache.cordova.Notification"/> 
+<cordova>
+	<access origin="http://9l.dk*"/>
+	<plugins>
+		<plugin name="Notification" value="org.apache.cordova.Notification"/>
+		<plugin name="Storage" value="org.apache.cordova.Storage" />
+	</plugin>
+</cordova>
