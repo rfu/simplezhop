@@ -9,19 +9,32 @@
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 		<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
-		function alertDismissed() {
-			// do something
-		}
-		var showMessageBox = function() {
-			document.addEventListener("menubutton", onMenuKeyDown, false);
+		function onDeviceReady() {
+			$("#myForm").submit(function(e){
+				e.preventDefault();
 
-			navigator.notification.alert('Weeeelcome!', alertDismissed, 'Have a nice day!', 'Thanks!');
+				$.ajax({
+				url: "http://9l.dk/zhopz/",
+				data: $('#myForm').serialize() +'&callback=?&add',
+				type: 'POST'
+				});
+			});
+
+			$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(json) {
+				$.each(json.cats, function(i, cat) {
+					$('#dataload').append(cat.catname);
+				});
+				$("#dataload").listview('refresh');
+			});			
 		}
 		function onMenuKeyDown() {
 			navigator.notification.alert("Hello World of PhoneGap");
 		}
 		function init(){
-			document.addEventListener("deviceready", showMessageBox, true);
+			document.addEventListener("deviceready", onDeviceReady, true);
+
+						
+
 		}
 		</script>
 	</head>
@@ -34,33 +47,7 @@
 		</header>
 		<div id="wrapper">
 			<div id="main-content">
-
-				<script>
-					$(document).live("mobileinit", function(){
-						$("#myForm").submit(function(e){
-							e.preventDefault();
-
-							$.ajax({
-							url: "http://9l.dk/zhopz/",
-							data: $('#myForm').serialize() +'&callback=?&add',
-							type: 'POST'
-							});
-						});
-
-						$.getJSON("http://9l.dk/zhopz/json.php?cats&callback=?", function(json) {
-							$.each(json.cats, function(i, cat) {
-								$('#dataload').append(cat.catname);
-							});
-							$("#dataload").listview('refresh');
-						});
-
-					});
-
-				</script>
-
 				<div id="dataload">&nbsp;</div>
-
-
 			</div>
 		</div>
 
